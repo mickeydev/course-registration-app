@@ -1,9 +1,11 @@
 package com.mike.courseregistrationapp.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
+import java.util.Set;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,10 +16,9 @@ import java.util.List;
 @Entity(name = "InstructorDetails")
 public class InstructorDetails {
     @Id
-    @SequenceGenerator(name = "instructor_id_seq", sequenceName = "instructor_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "instructor_id_seq")
-    @Column(name = "instructor_id", unique = true)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "instructor_id")
+    private Long id;
 
     @Column(name = "name", nullable = false, columnDefinition = "VARCHAR(255)")
     private String name;
@@ -28,7 +29,7 @@ public class InstructorDetails {
     @Column(name = "title", nullable = false, columnDefinition = "VARCHAR(200)")
     private String title;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "instructor")
-    @ToString.Exclude
-    private List<Offering> offerings;
+    Set<Offering> offerings;
 }

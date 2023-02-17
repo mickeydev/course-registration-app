@@ -31,4 +31,5 @@ public class AdminService {
     public List<Offering> viewAllOffered() {
         return offeringRepository.findAll();
     }
+
 }

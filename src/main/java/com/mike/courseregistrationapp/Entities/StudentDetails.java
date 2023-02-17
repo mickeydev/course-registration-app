@@ -1,9 +1,11 @@
 package com.mike.courseregistrationapp.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
+import java.util.Set;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,10 +16,9 @@ import java.util.List;
 @Entity(name = "StudentDetails")
 public class StudentDetails {
     @Id
-    @SequenceGenerator(name = "student_id_seq", sequenceName = "student_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_id_seq")
-    @Column(name = "student_id", unique = true)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "student_id")
+    private Long id;
 
     @Column(
             name = "first_name",
@@ -40,7 +41,7 @@ public class StudentDetails {
     )
     private String program;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "student")
-    @ToString.Exclude
-    private List<Offering> offerings;
+    Set<Offering> offerings;
 }

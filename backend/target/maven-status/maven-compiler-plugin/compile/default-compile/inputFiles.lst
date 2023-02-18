@@ -1,0 +1,16 @@
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\CourseRegistrationAppApplication.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Entities\InstructorDetails.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Entities\StudentDetails.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Form\OfferingForm.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Repo\StudentRepository.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Entities\OfferingKey.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Service\AdminService.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Form\StudentForm.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Repo\InstructorRepository.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Repo\CourseRepository.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Form\InstructorForm.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Controller\AdminController.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Entities\CourseDetails.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Repo\OfferingRepository.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Entities\Offering.java
+C:\Users\My\Documents\course-registration-app\backend\src\main\java\com\mike\courseregistrationapp\Form\CourseForm.java

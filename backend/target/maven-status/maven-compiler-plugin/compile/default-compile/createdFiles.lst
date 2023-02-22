@@ -1,0 +1,16 @@
+com\mike\courseregistrationapp\Form\CourseForm.class
+com\mike\courseregistrationapp\Repo\InstructorRepository.class
+com\mike\courseregistrationapp\Entities\StudentDetails.class
+com\mike\courseregistrationapp\Controller\AdminController.class
+com\mike\courseregistrationapp\Entities\Offering.class
+com\mike\courseregistrationapp\Form\InstructorForm.class
+com\mike\courseregistrationapp\Entities\OfferingKey.class
+com\mike\courseregistrationapp\Form\StudentForm.class
+com\mike\courseregistrationapp\Entities\CourseDetails.class
+com\mike\courseregistrationapp\Entities\InstructorDetails.class
+com\mike\courseregistrationapp\Repo\OfferingRepository.class
+com\mike\courseregistrationapp\Repo\StudentRepository.class
+com\mike\courseregistrationapp\Service\AdminService.class
+com\mike\courseregistrationapp\CourseRegistrationAppApplication.class
+com\mike\courseregistrationapp\Form\OfferingForm.class
+com\mike\courseregistrationapp\Repo\CourseRepository.class

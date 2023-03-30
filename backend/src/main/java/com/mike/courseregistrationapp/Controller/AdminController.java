@@ -7,8 +7,9 @@ import com.mike.courseregistrationapp.Entities.StudentDetails;
 import com.mike.courseregistrationapp.Form.CourseForm;
 import com.mike.courseregistrationapp.Form.InstructorForm;
 import com.mike.courseregistrationapp.Form.StudentForm;
-import com.mike.courseregistrationapp.Service.AdminService;
-import org.apache.coyote.Response;
+import com.mike.courseregistrationapp.Service.impl.AdminServiceImpl;
+import com.mike.courseregistrationapp.exception.InvalidFormException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +22,10 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class AdminController {
 
-    private final AdminService adminService;
+    private final AdminServiceImpl adminService;
 
     @Autowired
-    public AdminController(AdminService adminService) {
+    public AdminController(AdminServiceImpl adminService) {
         this.adminService = adminService;
     }
 
@@ -43,17 +44,32 @@ public class AdminController {
     public List<InstructorDetails> getAllInstructors(){return adminService.getAllInstructors();}
 
     @PostMapping(path = "add-student")
-    public ResponseEntity<String> addStudent(@RequestBody StudentForm studentForm){
-        return new ResponseEntity<>(adminService.addStudent(studentForm), HttpStatus.CREATED);
+    public ResponseEntity<String> addStudent(@RequestBody @Valid StudentForm studentForm) throws InvalidFormException {
+        try {
+            return new ResponseEntity<>(adminService.addStudent(studentForm), HttpStatus.CREATED);
+        }
+        catch (Exception e){
+            throw new InvalidFormException("Form is not valid");
+        }
     }
 
     @PostMapping(path = "add-course")
-    public ResponseEntity<String> addCourse(@RequestBody CourseForm courseForm){
-        return new ResponseEntity<>(adminService.addCourse(courseForm), HttpStatus.CREATED);
+    public ResponseEntity<String> addCourse(@RequestBody @Valid CourseForm courseForm) throws InvalidFormException{
+        try{
+            return new ResponseEntity<>(adminService.addCourse(courseForm), HttpStatus.CREATED);
+        }
+        catch (Exception e){
+            throw new InvalidFormException("Form is not valid");
+        }
     }
 
     @PostMapping(path = "add-instructor")
-    public ResponseEntity<String> addInstructor(@RequestBody InstructorForm instructorForm){
-        return new ResponseEntity<>(adminService.addInstructor(instructorForm), HttpStatus.CREATED);
+    public ResponseEntity<String> addInstructor(@RequestBody @Valid InstructorForm instructorForm) throws InvalidFormException {
+        try{
+            return new ResponseEntity<>(adminService.addInstructor(instructorForm), HttpStatus.CREATED);
+        }
+        catch (Exception e) {
+            throw new InvalidFormException("Form is not valid");
+        }
     }
 }

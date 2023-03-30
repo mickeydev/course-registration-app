@@ -1,8 +1,9 @@
 import { Box, Typography, TextField, Button, Alert } from '@mui/material';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState, useContext } from 'react';
 import axios from '../../axiosConfig';
 import AddStudent from '../../types/Student';
 import { useSnackbar } from 'notistack';
+import { RegContext } from '../../store/register-context';
 
 function StudentForm() {
    const [studentFormDetails, setStudentFormDetails] = useState<AddStudent>({
@@ -26,8 +27,17 @@ function StudentForm() {
          const response = await axios.post('/add-student', studentFormDetails);
          enqueueSnackbar(response.data, { variant: 'success' });
          console.log(response);
+         setStudentFormDetails({
+            firstName: '',
+            lastName: '',
+            program: '',
+         });
       } catch (e: any) {
          console.log(e);
+
+         if (e.response.status === 400) {
+            enqueueSnackbar('Fill all required details', { variant: 'error' });
+         }
       }
    }
 
@@ -45,6 +55,7 @@ function StudentForm() {
                   shrink: true,
                }}
                onChange={onChangeHandler}
+               value={studentFormDetails.firstName}
             />
             <TextField
                name="lastName"
@@ -57,6 +68,7 @@ function StudentForm() {
                   shrink: true,
                }}
                onChange={onChangeHandler}
+               value={studentFormDetails.lastName}
             />
             <TextField
                name="program"
@@ -69,6 +81,7 @@ function StudentForm() {
                   shrink: true,
                }}
                onChange={onChangeHandler}
+               value={studentFormDetails.program}
             />
 
             <Button type="submit" variant="contained" sx={{ mt: 3 }}>

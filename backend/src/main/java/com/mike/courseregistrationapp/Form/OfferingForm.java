@@ -1,5 +1,7 @@
 package com.mike.courseregistrationapp.Form;
 
+import com.mike.courseregistrationapp.Entities.CourseDetails;
+import com.mike.courseregistrationapp.Entities.InstructorDetails;
 import com.mike.courseregistrationapp.Entities.StudentDetails;
 import com.mike.courseregistrationapp.Repo.StudentRepository;
 import lombok.Data;
@@ -14,7 +16,7 @@ public class OfferingForm {
     private Integer sectionNo;
     private Integer year;
     private String semester;
-    private Long student_id;
-    private Long course_id;
-    private Long instructor_id;
+    private StudentDetails studentDetails;
+    private CourseDetails courseDetails;
+    private InstructorDetails instructorDetails;
 }

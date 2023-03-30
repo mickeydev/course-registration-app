@@ -22,17 +22,19 @@ function CourseForm() {
    async function OnSubmitHandler(e: FormEvent<HTMLFormElement>) {
       e.preventDefault();
       try {
-         if (
-            courseFormDetails.title.trim().length === 0 ||
-            courseFormDetails.prerequisite.trim().length === 0
-         ) {
-            return;
-         }
          const response = await axios.post('/add-course', courseFormDetails);
          enqueueSnackbar(response.data, { variant: 'success' });
          console.log(response);
+         setCourseFormDetails({
+            title: '',
+            prerequisite: '',
+         });
       } catch (e: any) {
          console.log(e);
+
+         if (e.response.status === 400) {
+            enqueueSnackbar('Fill all required details', { variant: 'error' });
+         }
       }
    }
 
@@ -50,6 +52,7 @@ function CourseForm() {
                   shrink: true,
                }}
                onChange={OnChangeHandler}
+               value={courseFormDetails.title}
             />
             <TextField
                name="prerequisite"
@@ -62,6 +65,7 @@ function CourseForm() {
                   shrink: true,
                }}
                onChange={OnChangeHandler}
+               value={courseFormDetails.prerequisite}
             />
 
             <Button type="submit" variant="contained" sx={{ mt: 3 }}>

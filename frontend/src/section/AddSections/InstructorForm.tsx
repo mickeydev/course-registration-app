@@ -30,8 +30,17 @@ function InstructorForm() {
          );
          enqueueSnackbar(response.data, { variant: 'success' });
          console.log(response);
+         setInstructorFormDetails({
+            title: '',
+            name: '',
+            department: '',
+         });
       } catch (e: any) {
          console.log(e);
+
+         if (e.response.status === 400) {
+            enqueueSnackbar('Fill all required details', { variant: 'error' });
+         }
       }
    }
 
@@ -49,6 +58,7 @@ function InstructorForm() {
                   shrink: true,
                }}
                onChange={OnChangeHandler}
+               value={instructorFormDetails.title}
             />
             <TextField
                name="name"
@@ -61,6 +71,7 @@ function InstructorForm() {
                   shrink: true,
                }}
                onChange={OnChangeHandler}
+               value={instructorFormDetails.name}
             />
             <TextField
                name="department"
@@ -73,6 +84,7 @@ function InstructorForm() {
                   shrink: true,
                }}
                onChange={OnChangeHandler}
+               value={instructorFormDetails.department}
             />
 
             <Button type="submit" variant="contained" sx={{ mt: 3 }}>

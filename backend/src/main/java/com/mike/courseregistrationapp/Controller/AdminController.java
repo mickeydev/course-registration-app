@@ -6,6 +6,7 @@ import com.mike.courseregistrationapp.Entities.Offering;
 import com.mike.courseregistrationapp.Entities.StudentDetails;
 import com.mike.courseregistrationapp.Form.CourseForm;
 import com.mike.courseregistrationapp.Form.InstructorForm;
+import com.mike.courseregistrationapp.Form.OfferingForm;
 import com.mike.courseregistrationapp.Form.StudentForm;
 import com.mike.courseregistrationapp.Service.impl.AdminServiceImpl;
 import com.mike.courseregistrationapp.exception.InvalidFormException;
@@ -67,6 +68,16 @@ public class AdminController {
     public ResponseEntity<String> addInstructor(@RequestBody @Valid InstructorForm instructorForm) throws InvalidFormException {
         try{
             return new ResponseEntity<>(adminService.addInstructor(instructorForm), HttpStatus.CREATED);
+        }
+        catch (Exception e) {
+            throw new InvalidFormException("Form is not valid");
+        }
+    }
+
+    @PostMapping(path = "register")
+    public ResponseEntity<String> registerStudent(@RequestBody @Valid OfferingForm offeringForm) throws InvalidFormException {
+        try {
+            return new ResponseEntity<>(adminService.addOffered(offeringForm), HttpStatus.CREATED);
         }
         catch (Exception e) {
             throw new InvalidFormException("Form is not valid");

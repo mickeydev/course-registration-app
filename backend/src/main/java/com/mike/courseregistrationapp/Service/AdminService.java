@@ -10,10 +10,17 @@ import com.mike.courseregistrationapp.Form.OfferingForm;
 import com.mike.courseregistrationapp.Form.StudentForm;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AdminService {
 
     public List<Offering> viewAllOffered();
+
+    CourseDetails getCourseById(Long id);
+
+    StudentDetails getStudentById(Long id);
+
+    InstructorDetails getInstructorById(Long id);
 
     public String addScheduling(OfferingForm offeringForm);
 

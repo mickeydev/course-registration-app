@@ -3,6 +3,8 @@ package com.mike.courseregistrationapp.Entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Optional;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -19,7 +21,7 @@ public class Offering {
     private Integer roomNo;
 
     @Column(name = "time", nullable = false)
-    private String time;
+    private String classTime;
 
     @Column(name = "section_no", nullable = false)
     private Integer sectionNo;

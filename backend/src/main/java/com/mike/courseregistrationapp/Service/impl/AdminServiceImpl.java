@@ -13,9 +13,11 @@ import com.mike.courseregistrationapp.Repo.InstructorRepository;
 import com.mike.courseregistrationapp.Repo.OfferingRepository;
 import com.mike.courseregistrationapp.Repo.StudentRepository;
 import com.mike.courseregistrationapp.Service.AdminService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -41,6 +43,27 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public StudentDetails getStudentById(Long id) {
+        Optional<StudentDetails> studentDetails = studentRepository.findById(id);
+
+        return new ModelMapper().map(studentDetails, StudentDetails.class);
+    }
+
+    @Override
+    public CourseDetails getCourseById(Long id) {
+        Optional<CourseDetails> courseDetails = courseRepository.findById(id);
+
+        return new ModelMapper().map(courseDetails, CourseDetails.class);
+    }
+
+    @Override
+    public InstructorDetails getInstructorById(Long id) {
+        Optional<InstructorDetails> instructorDetails = instructorRepository.findById(id);
+
+        return new ModelMapper().map(instructorDetails, InstructorDetails.class);
+    }
+
+    @Override
     public String addScheduling(OfferingForm offeringForm){
         Offering offering = new Offering();
 
@@ -48,7 +71,7 @@ public class AdminServiceImpl implements AdminService {
         offering.setSectionNo(offeringForm.getSectionNo());
         offering.setSemester(offeringForm.getSemester());
         offering.setYear(offeringForm.getYear());
-        offering.setTime(offeringForm.getTime());
+        offering.setClassTime(offeringForm.getClassTime());
 
         offeringRepository.save(offering);
         return "Student course schedule is registered";
@@ -112,9 +135,11 @@ public class AdminServiceImpl implements AdminService {
         offering.setYear(offeringForm.getYear());
         offering.setSemester(offeringForm.getSemester());
 
-        offering.setStudent(offeringForm.getStudentDetails());
-        offering.setCourse(offeringForm.getCourseDetails());
-        offering.setInstructor(offeringForm.getInstructorDetails());
+        offering.setStudent(getStudentById(offeringForm.getStudent_id()));
+        offering.setCourse(getCourseById(offeringForm.getCourse_id()));
+        offering.setInstructor(getInstructorById(offeringForm.getInstructor_id()));
+
+        offeringRepository.save(offering);
 
         return "Registration Finished Successfully";
     }

@@ -14,17 +14,17 @@ import java.util.Optional;
 @Data
 public class OfferingForm {
     private Integer roomNo;
-    private String time;
+    private String classTime;
     private Integer sectionNo;
     private Integer year;
     private String semester;
 
     @NotNull
-    private StudentDetails studentDetails;
+    private Long student_id;
 
     @NotNull
-    private CourseDetails courseDetails;
+    private Long course_id;
 
     @NotNull
-    private InstructorDetails instructorDetails;
+    private Long instructor_id;
 }

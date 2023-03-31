@@ -20,8 +20,7 @@ public class Offering {
 
     private Integer roomNo;
 
-    @Column(name = "time", nullable = false)
-    private String classTime;
+    private String classHours;
 
     @Column(name = "section_no", nullable = false)
     private Integer sectionNo;

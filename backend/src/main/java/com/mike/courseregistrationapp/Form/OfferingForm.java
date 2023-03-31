@@ -14,7 +14,7 @@ import java.util.Optional;
 @Data
 public class OfferingForm {
     private Integer roomNo;
-    private String classTime;
+    private String classHours;
     private Integer sectionNo;
     private Integer year;
     private String semester;

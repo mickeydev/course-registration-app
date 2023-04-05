@@ -20,8 +20,6 @@ public class Offering {
 
     private Integer roomNo;
 
-    private String classHours;
-
     @Column(name = "section_no", nullable = false)
     private Integer sectionNo;
 
@@ -30,6 +28,9 @@ public class Offering {
 
     @Column(name = "semester", nullable = false)
     private String semester;
+
+    @Column(name = "time", nullable = false)
+    private String time;
 
     @ManyToOne
     @JoinColumn(name = "student_id")

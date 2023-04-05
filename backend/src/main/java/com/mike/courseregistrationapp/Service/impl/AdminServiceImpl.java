@@ -71,7 +71,6 @@ public class AdminServiceImpl implements AdminService {
         offering.setSectionNo(offeringForm.getSectionNo());
         offering.setSemester(offeringForm.getSemester());
         offering.setYear(offeringForm.getYear());
-        offering.setClassHours(offeringForm.getClassHours());
 
         offeringRepository.save(offering);
         return "Student course schedule is registered";
@@ -134,6 +133,7 @@ public class AdminServiceImpl implements AdminService {
         offering.setSectionNo(offeringForm.getSectionNo());
         offering.setYear(offeringForm.getYear());
         offering.setSemester(offeringForm.getSemester());
+        offering.setTime(offeringForm.getTime());
 
         offering.setStudent(getStudentById(offeringForm.getStudent_id()));
         offering.setCourse(getCourseById(offeringForm.getCourse_id()));

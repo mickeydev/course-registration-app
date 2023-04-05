@@ -2,6 +2,7 @@ import React from "react"
 import { Box } from "@mui/material"
 import RegisterForm from "../section/RegisterSections/RegisterForm"
 import Typography from "@mui/material/Typography"
+import RegisteTable from "../components/RegisterTable"
 
 function Register() {
     return <Box m={3}>
@@ -11,7 +12,9 @@ function Register() {
             <RegisterForm />
         </Box>
 
-        <Box>Data preview</Box>
+        <Box mt={2}>
+            <RegisteTable />
+        </Box>
 
     </Box>
 }

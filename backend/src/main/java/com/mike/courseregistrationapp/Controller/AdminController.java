@@ -30,7 +30,7 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @GetMapping
+    @GetMapping(path = "view-offered")
     public List<Offering> getAllOffered(){
         return adminService.viewAllOffered();
     }

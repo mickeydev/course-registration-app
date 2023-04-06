@@ -84,4 +84,9 @@ public class AdminController {
         }
     }
 
+
+    @DeleteMapping(path = "delete-instructor/{id}")
+    public ResponseEntity<String> deleteInstructor(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(adminService.deleteInstructorById(id), HttpStatus.OK);
+    }
 }

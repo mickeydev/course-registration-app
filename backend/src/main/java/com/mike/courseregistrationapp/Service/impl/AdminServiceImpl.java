@@ -143,4 +143,5 @@ public class AdminServiceImpl implements AdminService {
 
         return "Registration Finished Successfully";
     }
+
 }

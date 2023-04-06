@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Card, Typography, List, ListSubheader, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import { Box, Card, Typography, List, ListSubheader, ListItemButton, ListItemIcon, ListItemText, ListItem, IconButton } from "@mui/material";
 import SchoolIcon from '@mui/icons-material/School';
+import DeleteIcon from '@mui/icons-material/Delete'
+import EditIcon from '@mui/icons-material/Edit';
 import { RegContext } from "../../store/register-context";
 
 function StudentDashboardView() {
@@ -22,10 +24,16 @@ function StudentDashboardView() {
                 {
                     CTX.studentData.map(data => (
                         <ListItemButton sx={{ width: '100%' }} key={data.id}>
-                            <ListItemIcon>
-                                <SchoolIcon />
-                            </ListItemIcon>
-                            <ListItemText primary={`${data.firstName} ${data.lastName}`} secondary={data.program} />
+                            <ListItem secondaryAction={
+                                <IconButton edge="end" aria-label="delete">
+                                    <EditIcon color="warning" />
+                                </IconButton>
+                            }>
+                                <ListItemIcon>
+                                    <SchoolIcon />
+                                </ListItemIcon>
+                                <ListItemText primary={`${data.firstName} ${data.lastName}`} secondary={data.program} />
+                            </ListItem>
                         </ListItemButton>
                     ))
                 }

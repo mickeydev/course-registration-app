@@ -7,22 +7,21 @@ import axios from "../../axiosConfig";
 import { RegContext } from "../../store/register-context";
 import CourseUpdate from "../UpdateSection/CourseUpdate";
 
+
+const AddCourse = {
+    id: 0,
+    title: '',
+    prerequisite: '',
+}
+
+
 function CourseDashboardView() {
     const CTX = useContext(RegContext);
-    const [open, setOpen] = useState(false);
-
-    const handleOpen = () => {
-        setOpen(true)
-        console.log(open);
-    };
-    const handleClose = () => {
-        setOpen(false)
-        console.log(open)
-    };
+    const [data, setData] = useState(AddCourse);
 
     return (
         <Box>
-            <CourseUpdate />
+            <CourseUpdate id={data.id} prerequisite={data.prerequisite} title={data.title} />
             <Card sx={{
                 border: `solid 1px #333`
             }}>
@@ -39,7 +38,7 @@ function CourseDashboardView() {
                             <ListItemButton sx={{ width: '100%' }} key={data.id}>
                                 <ListItem
                                     secondaryAction={
-                                        <IconButton edge="end" aria-label="delete" onClick={handleOpen}>
+                                        <IconButton edge="end" aria-label="delete" onClick={() => { setData(data); CTX.openCourseModal() }}>
                                             <EditIcon color="warning" />
                                         </IconButton>
                                     }>

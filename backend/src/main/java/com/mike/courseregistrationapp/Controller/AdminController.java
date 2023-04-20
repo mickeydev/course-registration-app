@@ -85,8 +85,18 @@ public class AdminController {
     }
 
 
-    @DeleteMapping(path = "delete-instructor/{id}")
-    public ResponseEntity<String> deleteInstructor(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(adminService.deleteInstructorById(id), HttpStatus.OK);
+    @PutMapping(path = "update-course/{id}")
+    public ResponseEntity<String> updateCourse(@PathVariable("courseId") Long courseId, CourseForm courseForm) throws InvalidFormException {
+        try {
+            return new ResponseEntity<>(adminService.updateCourse(courseId, courseForm), HttpStatus.OK);
+        }
+        catch (Exception e) {
+            throw new InvalidFormException("Form is not valid");
+        }
     }
+
+//    @DeleteMapping(path = "delete-instructor/{id}")
+//    public ResponseEntity<String> deleteInstructor(@PathVariable("id") Long id) {
+//        return new ResponseEntity<>(adminService.deleteInstructorById(id), HttpStatus.OK);
+//    }
 }

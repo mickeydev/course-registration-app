@@ -144,4 +144,13 @@ public class AdminServiceImpl implements AdminService {
         return "Registration Finished Successfully";
     }
 
+    @Override
+    public String updateCourse(Long id, CourseForm courseForm) {
+        CourseDetails existingCourse =courseRepository.findById(id).orElse(null);
+        if(existingCourse != null){
+            existingCourse.setTitle(courseForm.getTitle());
+            existingCourse.setPrerequisite(courseForm.getPrerequisite());
+        }
+        return id + ": Updated successfully";
+    }
 }

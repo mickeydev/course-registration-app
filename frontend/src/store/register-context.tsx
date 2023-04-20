@@ -21,7 +21,10 @@ const initialValues: contextType = {
    studentData: [],
    instructorData: [],
    registerData: [],
-   tableData: []
+   tableData: [],
+   openStat: false,
+   openCourseModal: () => { },
+   closeCourseModal: () => { },
 };
 
 export const RegContext = createContext<contextType>(initialValues);
@@ -36,6 +39,7 @@ function RegContextProvider({ children }: Props) {
    const [instructorData, setInstructorData] = useState<ViewInstructor[]>([]);
    const [registerData, setRegisterData] = useState<getRegister[]>([]);
    const [tableData, setTableData] = useState<tableData[]>([]);
+   const [open, setOpen] = React.useState(false);
 
    async function CourseViewGet() {
       try {
@@ -130,6 +134,10 @@ function RegContextProvider({ children }: Props) {
       TableViewGet();
    }, [])
 
+   const handleOpen = () => setOpen(true);
+
+   const handleClose = () => setOpen(false);
+
    const values = {
       courseCount: courseData.length,
       studentCount: studentData.length,
@@ -138,7 +146,10 @@ function RegContextProvider({ children }: Props) {
       studentData: studentData,
       instructorData: instructorData,
       registerData: registerData,
-      tableData: tableData
+      tableData: tableData,
+      openStat: open,
+      openCourseModal: () => setOpen(true),
+      closeCourseModal: () => setOpen(false),
    };
 
    return <RegContext.Provider value={values}>{children}</RegContext.Provider>;

@@ -12,4 +12,7 @@ export default interface contextType {
   instructorData: ViewInstructor[];
   registerData: getRegister[];
   tableData: tableData[];
+  openStat: boolean;
+  openCourseModal: () => void;
+  closeCourseModal: () => void;
 }

@@ -38,4 +38,5 @@ public interface AdminService {
 
     public String addOffered(OfferingForm offeringForm);
 
+    public String updateCourse(Long id, CourseForm courseForm);
 }
